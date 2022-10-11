@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useContext } from 'react';
 import { Button, Box, TextField } from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
@@ -7,13 +7,17 @@ si en vez de esto pongo
 import AddIcon from '@mui/icons-material/AddBoxOutlined';
 igual funciona y se llama asi el componente AddIcon, porque es la expo por defecto de ese path
 */
-import { Cookies } from 'next/dist/server/web/spec-extension/cookies';
+import { EntriesContext } from '../../context/entries';
+import { UIContext } from '../../context/ui';
 
 export const NewEntry = () => {
 
-    const [isAdding, setIsAdding] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [touched, setTouched] = useState(false);
+
+    const { addNewEntry } = useContext( EntriesContext );
+    const { isAddingEntry, setIsAddingEntry} = useContext( UIContext );
+
 
     const onTextFieldChanged = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue( event.target.value);
@@ -22,7 +26,11 @@ export const NewEntry = () => {
 
     const onSave = () => {
         if( inputValue.length === 0) return;
-        console.log({ inputValue})
+        addNewEntry ( inputValue );
+        setIsAddingEntry( false );
+        setTouched( false );
+        setInputValue( '' );
+
     }
 
 
@@ -30,7 +38,7 @@ export const NewEntry = () => {
         <>
             <Box sx={{ marginBottom: 2, paddingX: 1 }}>
                 {
-                    isAdding ? (
+                    isAddingEntry ? (
                         <>
                             <TextField
                                 fullWidth
@@ -53,7 +61,7 @@ export const NewEntry = () => {
                                     variant='text'
                                     color='error'
                                     endIcon={<CancelOutlinedIcon />}
-                                    onClick={() => setIsAdding(false)}
+                                    onClick={() => setIsAddingEntry(false)}
                                 >
                                     Cancelar
                                 </Button>
@@ -75,7 +83,7 @@ export const NewEntry = () => {
                                 startIcon={<AddBoxOutlinedIcon />}
                                 fullWidth
                                 variant='outlined'
-                                onClick={() => setIsAdding(true)}
+                                onClick={() => setIsAddingEntry(true)}
                             >
                                 Agregar tarea
                             </Button>
