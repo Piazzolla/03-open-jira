@@ -23,3 +23,15 @@ Llamar a:
 
 http://localhost:3000/api/seeds
 ```
+
+
+### __Anotaciones del curso__
+
+- El pages/api trabaja en backend y obtiene la data desde la bd.   
+El /apis trabaja en front y manda requests al back para obtener esa misma data.   
+   
+
+- La Entry de models es el formato de la data en mongoose, lo uso en backend.   
+La Entry de interfaces es como se ve en el front.
+
+- /pages/entries/index.js fue creado con el snippet nextapi (API Routes). Esto recibe los requests rest al back
