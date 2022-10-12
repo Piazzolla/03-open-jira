@@ -34,4 +34,4 @@ El /apis trabaja en front y manda requests al back para obtener esa misma data.
 - La Entry de models es el formato de la data en mongoose, lo uso en backend.   
 La Entry de interfaces es como se ve en el front.
 
-- /pages/entries/index.js fue creado con el snippet nextapi (API Routes). Esto recibe los requests rest al back
+- /pages/entries/index.js fue creado con el snippet nextapi (API Routes). Esto recibe los requests rest al back. Al snippet le falta el nombre de la funcion, por eso da un error, lo agrego y ya.
