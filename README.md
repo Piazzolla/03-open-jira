@@ -16,6 +16,14 @@ mongodb://localhost:27017/entriesdb
 ## Configurar las variables de entorno
 Renombrar el archivo __.env.template__ a __.env__
 
+
+* Recontruir los módulos de node y levantar Next
+```
+
+yarn install
+yarn dev
+```
+
 ## Llenar la base de datos con info de pruebas
 
 Llamar a:
