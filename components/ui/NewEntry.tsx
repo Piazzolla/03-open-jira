@@ -21,7 +21,6 @@ export const NewEntry = () => {
 
     const onTextFieldChanged = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue( event.target.value);
-
     }
 
     const onSave = () => {
