@@ -3,6 +3,7 @@ import { FC, DragEvent, useContext } from 'react';
 import { Entry } from '../../interfaces';
 import { UIContext } from '../../context/ui/UIContext';
 import { useRouter } from 'next/router';
+import { dateFunctions } from '../../utils';
 
 
 interface Props {
@@ -42,7 +43,7 @@ export const EntryCard:FC<Props> = ({ entry }) => {
                 </Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: '2'}}>
-                <Typography variant='body2'>hace 30 minutos</Typography>
+                <Typography variant='body2'>{ dateFunctions.getFormatDistanceToNow( entry.createdAt) }</Typography>
             </CardActions>
         </CardActionArea>
     </Card>
